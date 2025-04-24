@@ -1,4 +1,15 @@
 :80, :443  {
+    security {
+        authentication portal myportal {
+            jwt {
+                token_name "Bearer"
+                token_secret "your_strong_jwt_secret_here" # Должен совпадать с Spring
+                token_issuer "yourdomain.com"
+                token_lifetime 3600
+            }
+        }
+    }
+
     vars {
         front-service {env.FRONT_SERVICE_URL}
         auth-service {env.AUTH_SERVICE_URL}
