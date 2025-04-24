@@ -26,15 +26,6 @@
     }
 
     handle @users_service_router {
-        jwt {
-            primary yes
-            allow sub aud
-            secret {env.JWT_SIGN_KEY}
-        }
-
-        header X-User-Id {jwt.payload.sub}
-        header X-User-Role {jwt.payload.role}
-
         uri strip_prefix /api
         reverse_proxy {vars.user-service}
     }
