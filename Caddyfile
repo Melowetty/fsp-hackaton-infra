@@ -1,11 +1,18 @@
 {
+    # Глобальные настройки безопасности
     security {
-        authentication portal myportal {
+        authentication portal my_auth_portal {
             jwt {
                 token_name "Bearer"
-                token_secret "your_strong_jwt_secret_here" # Должен совпадать с Spring
+                token_secret "your_strong_jwt_secret_here"  # Должен совпадать с Spring!
                 token_issuer "yourdomain.com"
                 token_lifetime 3600
+                # Дополнительные claims
+                claims {
+                    roles roles
+                    user_id sub
+                    email email
+                }
             }
         }
     }
