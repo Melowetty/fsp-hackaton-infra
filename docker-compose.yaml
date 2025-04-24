@@ -22,6 +22,7 @@ services:
       - 8081
     networks:
       - auth-service
+      - user-service
       - gateway
   auth-service-db:
     image: postgres
@@ -34,7 +35,6 @@ services:
       - auth-service-db:/var/lib/postgresql/data
     networks:
       - auth-service
-      - user-service
   user-service:
     container_name: user-service
     image: melowetty/fsp-user-service
