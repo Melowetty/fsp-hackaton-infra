@@ -10,7 +10,7 @@
         reverse_proxy {vars.auth-service}
     }
 
-    handle /api/users /api/users/* {
+    handle /api/users, /api/users/* {
         jwt {
             primary yes
             allow sub aud
