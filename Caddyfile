@@ -1,0 +1,16 @@
+:80, :443  {
+    vars {
+        front-service {env.FRONT_SERVICE_URL}
+        auth-service {env.AUTH_SERVICE_URL}
+
+    }
+
+    handle /api/auth/* {
+        uri strip_prefix /api
+        reverse_proxy {vars.auth-service}
+    }
+
+    handle {
+        reverse_proxy {vars.front-service}
+    }
+}
