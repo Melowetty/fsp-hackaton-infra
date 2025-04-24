@@ -1,4 +1,4 @@
-:80, :443  {
+{
     security {
         authentication portal myportal {
             jwt {
@@ -9,7 +9,9 @@
             }
         }
     }
+}
 
+:80, :443  {
     vars {
         front-service {env.FRONT_SERVICE_URL}
         auth-service {env.AUTH_SERVICE_URL}
