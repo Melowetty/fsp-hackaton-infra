@@ -1,6 +1,6 @@
 services:
   caddy:
-    image: melowetty/api-gateway
+    image: ghcr.io/greenpau/caddy-auth:latest
     restart: always
     env_file: .env
     volumes:
