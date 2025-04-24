@@ -34,9 +34,35 @@ services:
       - auth-service-db:/var/lib/postgresql/data
     networks:
       - auth-service
+  user-service:
+    container_name: user-service
+    image: melowetty/fsp-user-service
+    depends_on:
+      - user-service-db
+    restart: always
+    env_file: 
+      - user-service.env
+    expose:
+      - 8080
+    networks:
+      - user-service
+      - gateway
+  user-service-db:
+    image: postgres
+    restart: always
+    env_file: 
+      - user-service.env
+    expose:
+      - 5432
+    volumes:
+      - user-service-db:/var/lib/postgresql/data
+    networks:
+      - user-service
 volumes:
   auth-service-db:
+  user-service-db:
 networks:
   auth-service:
+  user-service:
   gateway:
     
