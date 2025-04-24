@@ -59,6 +59,13 @@ services:
       - user-service-db:/var/lib/postgresql/data
     networks:
       - user-service
+  frontend:
+    container_name: frontend
+    image: melowetty/fsp-frontend
+    ports:
+      - "3000:3000"
+  networks:
+      - gateway
 volumes:
   auth-service-db:
   user-service-db:
