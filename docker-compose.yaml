@@ -1,6 +1,6 @@
 services:
   caddy:
-    image: ghcr.io/greenpau/caddy-auth:latest
+    image: ghcr.io/authcrunch/authcrunch:latest
     restart: always
     env_file: .env
     volumes:
